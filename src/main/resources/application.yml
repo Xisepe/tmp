@@ -25,3 +25,8 @@ server:
 logging:
   level:
     sql: trace
+springdoc:
+  api-docs:
+    path: /docs
+#  swagger-ui:
+#    url:

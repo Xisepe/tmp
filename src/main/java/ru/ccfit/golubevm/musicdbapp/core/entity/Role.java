@@ -25,4 +25,9 @@ public class Role {
     @NotNull
     @Column(name = "name", nullable = false, length = 32)
     private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
