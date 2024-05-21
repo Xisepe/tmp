@@ -61,6 +61,8 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
 
     testImplementation("io.rest-assured:rest-assured:5.4.0")
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation("org.hamcrest:hamcrest:2.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
