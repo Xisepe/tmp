@@ -35,7 +35,7 @@ public class Artist {
     @Column(name = "genre", length = 32)
     private String genre;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private Set<Album> albums = new LinkedHashSet<>();
 
 }
