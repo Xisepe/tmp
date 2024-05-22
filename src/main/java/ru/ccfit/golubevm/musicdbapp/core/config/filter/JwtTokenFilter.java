@@ -1,4 +1,4 @@
-package ru.ccfit.golubevm.musicdbapp.core.filter;
+package ru.ccfit.golubevm.musicdbapp.core.config.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

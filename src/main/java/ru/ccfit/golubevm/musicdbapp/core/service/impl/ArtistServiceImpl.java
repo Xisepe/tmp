@@ -7,7 +7,6 @@ import ru.ccfit.golubevm.musicdbapp.core.repository.ArtistRepository;
 import ru.ccfit.golubevm.musicdbapp.core.service.ArtistService;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +19,11 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public Artist updateArtist(Integer id, Artist artist) {
-        if (!artistRepository.existsById(id)) {
-            throw new NoSuchElementException();
-        }
-        artist.setId(id);
-        return artistRepository.save(artist);
+        var a = getArtist(id);
+        a.setArtistName(artist.getArtistName());
+        a.setGenre(artist.getGenre());
+        a.setDescription(artist.getDescription());
+        return artistRepository.save(a);
     }
 
     @Override

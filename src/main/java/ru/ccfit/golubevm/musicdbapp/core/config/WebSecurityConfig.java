@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.ccfit.golubevm.musicdbapp.core.filter.JwtTokenFilter;
+import ru.ccfit.golubevm.musicdbapp.core.config.filter.JwtTokenFilter;
 
 @Configuration
 @EnableMethodSecurity

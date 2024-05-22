@@ -7,7 +7,6 @@ import ru.ccfit.golubevm.musicdbapp.SongInfo;
 import ru.ccfit.golubevm.musicdbapp.core.entity.Song;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface SongRepository extends JpaRepository<Song, Integer> {
     List<Song> findSongsByDurationBetweenOrderByTitle(@NotNull Integer duration, @NotNull Integer duration2);

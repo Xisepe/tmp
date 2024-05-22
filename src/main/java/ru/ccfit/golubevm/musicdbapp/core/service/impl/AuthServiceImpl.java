@@ -1,12 +1,9 @@
 package ru.ccfit.golubevm.musicdbapp.core.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import ru.ccfit.golubevm.musicdbapp.core.entity.FixedRole;
 import ru.ccfit.golubevm.musicdbapp.core.entity.User;
@@ -15,8 +12,6 @@ import ru.ccfit.golubevm.musicdbapp.core.model.UserDetailsImpl;
 import ru.ccfit.golubevm.musicdbapp.core.repository.RoleRepository;
 import ru.ccfit.golubevm.musicdbapp.core.repository.UserRepository;
 import ru.ccfit.golubevm.musicdbapp.core.service.AuthService;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
