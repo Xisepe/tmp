@@ -33,6 +33,11 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
+    public List<Artist> getAllArtist() {
+        return artistRepository.findAll();
+    }
+
+    @Override
     public void deleteArtist(Integer id) {
         artistRepository.deleteById(id);
     }
