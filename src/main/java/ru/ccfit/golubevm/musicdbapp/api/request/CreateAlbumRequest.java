@@ -17,7 +17,6 @@ public class CreateAlbumRequest implements Serializable {
     @Size(max = 64)
     @NotBlank
     String title;
-    Integer artistId;
     LocalDate releasedOn;
     @Size(max = 32)
     String genre;

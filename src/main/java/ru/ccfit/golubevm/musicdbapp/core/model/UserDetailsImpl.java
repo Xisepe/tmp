@@ -25,12 +25,13 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl of(User user) {
+        var roles = user.getRoles();
         return new UserDetailsImpl(
                 user.getId(),
                 user.getEmail(),
                 user.getUsername(),
                 user.getPassword(),
-                user.getRoles().stream()
+                roles.stream()
                         .map(role -> new SimpleGrantedAuthority(role.toString()))
                         .toList()
         );

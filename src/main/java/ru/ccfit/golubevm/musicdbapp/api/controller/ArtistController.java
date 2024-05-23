@@ -71,11 +71,16 @@ public class ArtistController {
 
     @GetMapping("/{id}/album/{albumId}")
     public AlbumDto getAlbum(@PathVariable("id") Integer id, @PathVariable("albumId") Integer albumId) {
-        return null;
+        var album = albumService.getAlbum(id, albumId);
+        return albumMapper.toAlbumDto(album);
     }
 
     @PutMapping("/{id}/album/{albumId}")
-    public UpdateAlbumResponse createAlbum(@PathVariable Integer id, @RequestBody UpdateAlbumRequest album) {
-        return null;
+    public UpdateAlbumResponse updateAlbum(@PathVariable("id") Integer id,
+                                           @PathVariable("albumId") Integer albumId,
+                                           @RequestBody UpdateAlbumRequest album) {
+        var alb = albumMapper.toEntity(album);
+        var upd = albumService.updateAlbum(id, albumId, alb);
+        return albumMapper.toUpdateAlbumResponse(upd);
     }
 }

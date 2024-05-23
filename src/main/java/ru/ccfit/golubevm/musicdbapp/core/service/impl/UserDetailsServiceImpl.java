@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.ccfit.golubevm.musicdbapp.core.model.UserDetailsImpl;
 import ru.ccfit.golubevm.musicdbapp.core.repository.UserRepository;
 @Primary
@@ -14,9 +15,10 @@ import ru.ccfit.golubevm.musicdbapp.core.repository.UserRepository;
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         var user = userRepository.findUserByEmail(username)
-                .orElseThrow(()->new UsernameNotFoundException("User: "+ username+ "Not Found!"));
+                .orElseThrow(()->new UsernameNotFoundException("User: "+ username+ " Not Found!"));
         return UserDetailsImpl.of(user);
     }
 }

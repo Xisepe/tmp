@@ -43,7 +43,6 @@ public class Album {
     @Column(name = "genre", length = 32)
     private String genre;
 
-    @NotNull
     @Column(name = "total_songs", nullable = false)
     private Integer totalSongs;
 
