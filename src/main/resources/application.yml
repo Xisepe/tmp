@@ -13,6 +13,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 32
 spring.flyway:
   user: ${SPRING_DATASOURCE_USERNAME}
   password: ${SPRING_DATASOURCE_PASSWORD}

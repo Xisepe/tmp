@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.testcontainers.containers.PostgreSQLContainer;
 import ru.ccfit.golubevm.musicdbapp.api.request.LoginRequest;
 import ru.ccfit.golubevm.musicdbapp.api.request.RegisterRequest;
+import ru.ccfit.golubevm.musicdbapp.config.Configuration;
+import ru.ccfit.golubevm.musicdbapp.config.IntegrationTestConfig;
 import ru.ccfit.golubevm.musicdbapp.core.entity.User;
 import ru.ccfit.golubevm.musicdbapp.core.repository.UserRepository;
 
@@ -19,32 +21,16 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Import(Configuration.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class AuthTest {
-    @Autowired
-    private PostgreSQLContainer<?> container;
+class AuthTest extends IntegrationTestConfig {
+
     @Autowired
     private UserRepository repository;
     @Autowired
     private PasswordEncoder encoder;
-    @LocalServerPort
-    private int port;
-
-    @BeforeAll
-    void setup() {
-        container.start();
-    }
-
-    @AfterAll
-    void shutdown() {
-        container.stop();
-    }
-
     @BeforeEach
-    void clearData() {
-        RestAssured.baseURI = "http://localhost:" + port;
+    @Override
+    public void clearData() {
+        super.clearData();
         repository.deleteAll();
     }
 
