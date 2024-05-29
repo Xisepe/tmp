@@ -14,7 +14,7 @@ public class RegisterRequest {
     private final String email;
     @Schema(description = "User's username", example = "amazing1unicorn")
     @Size(max = 64, message = "Username length should be under 64 symbols")
-    @Pattern(regexp = "^[a-z0-9]*$", message = "Password has to be in lowercase. Allowed only letters and digits")
+    @Pattern(regexp = "^[a-z0-9]*$", message = "Username has to be in lowercase. Allowed only letters and digits")
     private final String username;
     @Schema(description = "User's password", example = "password123")
     @Size(max = 32, min = 6, message = "Password length at least 6, at most 32")

@@ -20,6 +20,11 @@ public class ArtistServiceImpl implements ArtistService {
     }
 
     @Override
+    public Artist save(Artist artist) {
+        return artistRepository.save(artist);
+    }
+
+    @Override
     public void checkArtist(Integer id) throws NoSuchElementException {
         if (!exists(id)) throw new NoSuchElementException();
     }

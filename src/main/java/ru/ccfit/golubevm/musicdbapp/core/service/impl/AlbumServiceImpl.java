@@ -17,8 +17,11 @@ public class AlbumServiceImpl implements AlbumService {
     private final AlbumRepository albumRepository;
 
     @Override
+    @Transactional
     public Album createAlbum(Integer artistId, Album album) {
         var artist = artistService.getArtist(artistId);
+        artist.incTotalAlbums();
+        artistService.save(artist);
         album.setArtist(artist);
         return albumRepository.save(album);
     }

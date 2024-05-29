@@ -1,4 +1,4 @@
-package ru.ccfit.golubevm.musicdbapp;
+package ru.ccfit.golubevm.musicdbapp.core.repository.projection;
 
 /**
  * Projection for {@link ru.ccfit.golubevm.musicdbapp.core.entity.Artist}

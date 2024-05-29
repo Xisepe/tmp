@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 public interface ArtistService {
     boolean exists(Integer id);
+    Artist save(Artist artist);
     void checkArtist(Integer id) throws NoSuchElementException;
     List<Artist> createArtists(List<Artist> artist);
     Artist updateArtist(Integer id, Artist artist);

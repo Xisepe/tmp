@@ -1,18 +1,12 @@
 package ru.ccfit.golubevm.musicdbapp;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.testcontainers.containers.PostgreSQLContainer;
 import ru.ccfit.golubevm.musicdbapp.api.request.LoginRequest;
 import ru.ccfit.golubevm.musicdbapp.api.request.RegisterRequest;
-import ru.ccfit.golubevm.musicdbapp.config.Configuration;
 import ru.ccfit.golubevm.musicdbapp.config.IntegrationTestConfig;
 import ru.ccfit.golubevm.musicdbapp.core.entity.User;
 import ru.ccfit.golubevm.musicdbapp.core.repository.UserRepository;
@@ -29,8 +23,8 @@ class AuthTest extends IntegrationTestConfig {
     private PasswordEncoder encoder;
     @BeforeEach
     @Override
-    public void clearData() {
-        super.clearData();
+    public void prepare() {
+        super.prepare();
         repository.deleteAll();
     }
 

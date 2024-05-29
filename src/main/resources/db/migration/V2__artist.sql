@@ -2,7 +2,8 @@ create table artist(
     id serial primary key,
     artist_name varchar(128) not null,
     description varchar(255),
-    genre varchar(32)
+    genre varchar(32),
+    total_albums int default 0
 );
 
 create index idx_artist_artist_name on artist(artist_name);

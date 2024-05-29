@@ -38,4 +38,13 @@ public class Artist {
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private Set<Album> albums = new LinkedHashSet<>();
 
+    @Column(name = "total_albums")
+    private Integer totalAlbums;
+
+    public void incTotalAlbums() {
+        if (totalAlbums == null) {
+            totalAlbums = 0;
+        }
+        totalAlbums++;
+    }
 }

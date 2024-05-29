@@ -1,15 +1,16 @@
 package ru.ccfit.golubevm.musicdbapp.config;
 
 import io.restassured.RestAssured;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.testcontainers.containers.PostgreSQLContainer;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(Configuration.class)
@@ -19,7 +20,6 @@ public abstract class IntegrationTestConfig {
     private PostgreSQLContainer<?> container;
     @LocalServerPort
     private int port;
-
     @BeforeAll
     protected void setup() {
         container.start();
@@ -31,8 +31,7 @@ public abstract class IntegrationTestConfig {
     }
 
     @BeforeEach
-    protected void clearData() {
+    protected void prepare() {
         RestAssured.baseURI = "http://localhost:" + port;
     }
-
 }
