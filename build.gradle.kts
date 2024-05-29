@@ -37,6 +37,8 @@ dependencies {
     implementation("org.flywaydb:flyway-core:10.7.1")
     implementation("org.flywaydb:flyway-database-postgresql:10.7.1")
 
+    implementation("net.jodah:typetools:0.6.3")
+
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl

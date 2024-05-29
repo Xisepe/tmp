@@ -1,4 +1,4 @@
-package ru.ccfit.golubevm.musicdbapp.service;
+package ru.ccfit.golubevm.musicdbapp;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
 import ru.ccfit.golubevm.musicdbapp.config.IntegrationTestConfig;
 import ru.ccfit.golubevm.musicdbapp.core.repository.*;
+import ru.ccfit.golubevm.musicdbapp.core.repository.custom.ProxyProvider;
+import ru.ccfit.golubevm.musicdbapp.core.repository.custom.UserRepo;
 import ru.ccfit.golubevm.musicdbapp.core.repository.projection.ArtistInfo;
 
 import java.util.List;
@@ -24,7 +26,6 @@ public class SqlQueriesTest extends IntegrationTestConfig {
     private SongRepository songRepository;
     @Autowired
     private PlaylistRepository playlistRepository;
-
 
     @Test
     @Sql("/json_user_test.sql")
@@ -49,7 +50,7 @@ public class SqlQueriesTest extends IntegrationTestConfig {
                 .map(ArtistInfo::getTotalAlbums)
                 .sorted()
                 .toList();
-        assertThat(nums, Matchers.equalTo(List.of(3L,3L,5L,5L,7L)));
+        assertThat(nums, Matchers.equalTo(List.of(3L, 3L, 5L, 5L, 7L)));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class SqlQueriesTest extends IntegrationTestConfig {
     @Test
     @Sql("/filter_sort_test.sql")
     void filter_sort_test() {
-        var res = songRepository.findSongsByDurationBetweenOrderByTitle(55,70);
+        var res = songRepository.findSongsByDurationBetweenOrderByTitle(55, 70);
         assertThat(res, Matchers.hasSize(3));
     }
 
@@ -79,6 +80,7 @@ public class SqlQueriesTest extends IntegrationTestConfig {
         var res = albumRepository.getTotalDuration(1);
         assertThat(res, Matchers.equalTo(20));
     }
+
     @Test
     @Sql("/subquery_test.sql")
     void subquery_test() {
@@ -92,10 +94,11 @@ public class SqlQueriesTest extends IntegrationTestConfig {
         var res = artistRepository.getArtistsWithLatestAlbum();
         assertThat(res.get(0).getAlbumId(), Matchers.equalTo(2));
     }
+
     @Test
     @Sql("/upsert_test.sql")
     void upsert_test() {
-        userRepository.upsert(1,"test2@test.test","test","updated");
+        userRepository.upsert(1, "test2@test.test", "test", "updated");
         var user = userRepository.findUserByEmail("test2@test.test").orElseThrow();
         assertThat(user.getUsername(), Matchers.equalTo("updated"));
     }
